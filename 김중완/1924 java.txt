@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main{
+   public static void main(String[] args) {
+      	int days[] ={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	String dayname[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+
+	Scanner scan = new Scanner(System.in);
+	
+	int month = scan.nextInt();
+	int day = scan.nextInt();
+	scan.close();
+
+	int totaldays = day;
+	for(int i=0; i < month-1; ++i){
+		totaldays += days[i];
+	}
+	
+	System.out.println(dayname[totaldays % 7]);
+   }
+
+}

@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main{
+   public static void main(String[] args) {
+      String A;
+      Scanner scan = new Scanner(System.in);
+      A = scan.nextLine().trim();
+      scan.close();
+      
+      if(A.isEmpty()) {
+         System.out.println(0);
+      }else {
+         System.out.println(A.split(" ").length);
+      }
+   }
+
+}
