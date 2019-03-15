@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+const unsigned int MAX = 1000000;
+
+void check(char *getc, unsigned int index) {
+	int num = 0;
+	int i = index;
+	unsigned int count = 0;
+
+	for (i; i < MAX; i++) {
+		if (getc[i] == '\0') {
+			cout << count << endl;
+			return;
+		}
+		if(getc[i] != ' ') {
+			while (true) {
+				num = i+1;
+				if (getc[num] == ' ') {
+					count++;
+					i = num;
+					break;
+				}
+				else if (getc[num] == '\0') {
+					count++;
+					i = num;
+					cout << count << endl;
+					return;
+				}
+				break;
+			}
+		}
+	}
+
+}
+void run(void) {
+	char getChar[MAX];
+	cin.getline(getChar, MAX, '\n');
+	check(getChar, 0);
+}
+int main()
+{
+	run();
+}
