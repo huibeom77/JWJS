@@ -11,7 +11,7 @@
 			try {
 				
 				boolean samecheck=false;
-				countword x= new countword("test",1);
+				
 	
 				//파일 객체 생성 - 파일경로지정
 				File file = new File("C:\\Users\\wnddh\\Desktop\\test.txt");
@@ -28,15 +28,16 @@
 					for(int i=0; i<splitwords.length ; ++i){
 						
 						for(int j=0; j<wordlist.size(); ++j){
-							if(splitwords[i] == wordlist.get(j).stword) {
+							if(splitwords[i].equals(wordlist.get(j).stword)) {
 								wordlist.get(j).icount+=1;
 								samecheck = true;
 								break;
 							}
 						}
 						if(samecheck) {
-							samecheck =false;continue;
+							samecheck =false;
 						}else {
+							countword x= new countword("test",1);
 							x.setword(splitwords[i]);
 							wordlist.add(x);
 						}
