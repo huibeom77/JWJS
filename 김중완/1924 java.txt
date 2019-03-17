@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//중완바카
 public class Main{
    public static void main(String[] args) {
       	int days[] ={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
