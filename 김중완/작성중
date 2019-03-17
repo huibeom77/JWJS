@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+	public static void main(String[] args){
+		List<countword> wordlist = new ArrayList<countword>();
+
+		try {
+			int totalwords=0;
+
+			//파일 객체 생성 - 파일경로지정
+			File file = new File("C:\\Users\\wnddh\\Desktop\\test.txt");
+
+			//입력 스트림 생성
+			FileReader filereader = new FileReader(file);
+
+			//입력 버퍼 생성
+			BufferedReader bufReader = new BufferedReader(filereader);
+
+			String line = "";
+			while((line = bufReader.readLine()) != null) {
+				String[] splitwords = line.split(" ");
+				for(int i=0; i<splitwords.length ; ++i){
+					
+					for(int j=0; j<wordlist.length; ++j){
+						
+					}
+					
+				}
+			}
+			System.out.println(totalwords);
+			bufReader.close();
+		} catch (FileNotFoundException e) {
+			// TODO: handle exception
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+	
+	}
+
+
+
+class countword{
+	String stword;
+	int icount;
+}
+}
+
+
