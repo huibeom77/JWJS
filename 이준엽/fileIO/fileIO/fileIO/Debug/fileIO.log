@@ -1,0 +1,3 @@
+﻿  CFileManger.cpp
+c:\users\huibe\desktop\fileio\fileio\fileio\cfilemanger.cpp(26): warning C4101: 'currentFile' :참조되지 않은 지역 변수입니다.
+  fileIO.vcxproj -> C:\Users\huibe\Desktop\fileIO\fileIO\Debug\fileIO.exe
