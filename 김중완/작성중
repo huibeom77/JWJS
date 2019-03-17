@@ -1,85 +1,86 @@
-import java.io.*;
-import java.util.*;
-
-public class Main{
-
-
-
-	public static void main(String[] args){
-		List<countword> wordlist = new ArrayList<countword>();
-
-		try {
-			
-			boolean samecheck=false;
-			
-
-			//파일 객체 생성 - 파일경로지정
-			File file = new File("C:\\Users\\wnddh\\Desktop\\test.txt");
-
-			//입력 스트림 생성
-			FileReader filereader = new FileReader(file);
-
-			//입력 버퍼 생성
-			BufferedReader bufReader = new BufferedReader(filereader);
-
-			String line = "";
-			while((line = bufReader.readLine()) != null) {
-				String[] splitwords = line.split(" ");
-				for(int i=0; i<splitwords.length ; ++i){
-					
-					for(int j=0; j<wordlist.size(); ++j){
-						if(splitwords[i] == wordlist.get(j).stword) {
-							wordlist.get(j).icount+=1;
-							samecheck = true;
-							break;
+	import java.io.*;
+	import java.util.*;
+	
+	public class Main{
+	
+	
+	
+		public static void main(String[] args){
+			List<countword> wordlist = new ArrayList<countword>();
+	
+			try {
+				
+				boolean samecheck=false;
+				countword x= new countword("test",1);
+	
+				//파일 객체 생성 - 파일경로지정
+				File file = new File("C:\\Users\\wnddh\\Desktop\\test.txt");
+	
+				//입력 스트림 생성
+				FileReader filereader = new FileReader(file);
+	
+				//입력 버퍼 생성
+				BufferedReader bufReader = new BufferedReader(filereader);
+	
+				String line = "";
+				while((line = bufReader.readLine()) != null) {
+					String[] splitwords = line.split(" ");
+					for(int i=0; i<splitwords.length ; ++i){
+						
+						for(int j=0; j<wordlist.size(); ++j){
+							if(splitwords[i] == wordlist.get(j).stword) {
+								wordlist.get(j).icount+=1;
+								samecheck = true;
+								break;
+							}
 						}
+						if(samecheck) {
+							samecheck =false;continue;
+						}else {
+							x.setword(splitwords[i]);
+							wordlist.add(x);
+						}
+						
 					}
-					if(samecheck) {
-						samecheck =false;continue;
-					}else {
-						//문제
-						wordlist.add(x);
-					}
-					
 				}
+				for(int i=0; i<wordlist.size();++i) {
+					System.out.print(wordlist.get(i).getint()+" ");
+					System.out.println(wordlist.get(i).getword());
+				}
+				
+				bufReader.close();
+			} catch (FileNotFoundException e) {
+				// TODO: handle exception
+			}catch(IOException e) {
+				System.out.println(e);
 			}
-			for(int i=0; i<wordlist.size();++i) {
-				System.out.println(wordlist.get(i));
-			}
-			
-			bufReader.close();
-		} catch (FileNotFoundException e) {
-			// TODO: handle exception
-		}catch(IOException e) {
-			System.out.println(e);
+		
 		}
 	
-	}
-
-
-
-class countword{
-	String stword;
-	int icount;
 	
-	public countword() {
+	
+	static class countword{
+		String stword;
+		int icount;
 		
+		public countword() {
+			
+		}
+		public countword(String str,int a) {
+			icount=a;
+			stword=str;
+		}
+		public String getword() {
+			return stword;
+		}
+		public int getint() {
+			return icount;
+		}
+		public void setword(String stt) {
+			this.stword=stt;
+		}
+		public void setint(int ii) {
+			this.icount=ii;
+		}
 	}
-	public countword(String str,int a) {
-		icount=a;
-		stword=str;
 	}
-	public String getword() {
-		return stword;
-	}
-	public int getint() {
-		return icount;
-	}
-	public void setword(String stt) {
-		this.stword=stt;
-	}
-	public void setint(int ii) {
-		this.icount=ii;
-	}
-}
-}
