@@ -2,11 +2,16 @@ import java.io.*;
 import java.util.*;
 
 public class Main{
+
+
+
 	public static void main(String[] args){
 		List<countword> wordlist = new ArrayList<countword>();
 
 		try {
-			int totalwords=0;
+			
+			boolean samecheck=false;
+			
 
 			//파일 객체 생성 - 파일경로지정
 			File file = new File("C:\\Users\\wnddh\\Desktop\\test.txt");
@@ -22,13 +27,26 @@ public class Main{
 				String[] splitwords = line.split(" ");
 				for(int i=0; i<splitwords.length ; ++i){
 					
-					for(int j=0; j<wordlist.length; ++j){
-						
+					for(int j=0; j<wordlist.size(); ++j){
+						if(splitwords[i] == wordlist.get(j).stword) {
+							wordlist.get(j).icount+=1;
+							samecheck = true;
+							break;
+						}
+					}
+					if(samecheck) {
+						samecheck =false;continue;
+					}else {
+						//문제
+						wordlist.add(x);
 					}
 					
 				}
 			}
-			System.out.println(totalwords);
+			for(int i=0; i<wordlist.size();++i) {
+				System.out.println(wordlist.get(i));
+			}
+			
 			bufReader.close();
 		} catch (FileNotFoundException e) {
 			// TODO: handle exception
@@ -43,7 +61,25 @@ public class Main{
 class countword{
 	String stword;
 	int icount;
+	
+	public countword() {
+		
+	}
+	public countword(String str,int a) {
+		icount=a;
+		stword=str;
+	}
+	public String getword() {
+		return stword;
+	}
+	public int getint() {
+		return icount;
+	}
+	public void setword(String stt) {
+		this.stword=stt;
+	}
+	public void setint(int ii) {
+		this.icount=ii;
+	}
 }
 }
-
-
